@@ -1,0 +1,5 @@
+dbserver_pkg: mariadb-server
+dbclient_pkg: mariadb
+dbinstalldir: /var/lib/mysql
+dbinstancname: MyDatabase
+dbdistribution: RedHat

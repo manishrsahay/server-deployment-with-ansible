@@ -1,0 +1,17 @@
+- name: Install all the mariadb packages (client and server)
+  yum: pkg={{ item }} state=latest
+  with_items:
+    - "{{ dbserver_pkg }}"
+    - "{{ dbclient_pkg }}"
+  notify:
+    - startdbservice
+    - runsecureinstallpause
+    - restartdbservice	
+    - copybackupfile
+    - createremotedb
+    - displaycreatingresults
+    - restoreremotedb
+    - testdbresults
+    - showdbresults
+- name: Add a backup CRON job to run every dat at midnight
+  cron: name="DBBackup" minute="0" hour="0" job="mysqldump -u root -ptest --database {{ dbinstancname }} > dbbackup.sql"

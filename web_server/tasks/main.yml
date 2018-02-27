@@ -1,0 +1,21 @@
+- name: Install apache and nfs server
+  yum: pkg={{ item }} state=latest
+  with_items:
+    - "{{ nfsutils_pkg }}"
+    - "{{ apache_pkg }}"
+    - "{{ curl_pkg }}"
+- name: Create the web server directory
+  file: path={{ client_path }} state=directory mode=755
+- name: Copy the apache config file to web server
+  copy: src=httpd.conf.template dest=/etc/httpd/conf/httpd.conf owner=root group=root mode=644
+- name: Create the vhost.d directory on the webserver
+  file: path=/etc/httpd/vhost.d state=directory mode=755
+- name: Copy the vhost configuration
+  copy: src=customsite.conf dest=/etc/httpd/vhost.d/customsite.conf owner=root group=root mode=755
+  notify: 
+    - startnfsservices
+    - startapacheservices
+    - mountnfs
+    - givepermissiontohttpd
+    - testhttpd
+    - displayresult 

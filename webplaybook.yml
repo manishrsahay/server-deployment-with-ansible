@@ -1,0 +1,8 @@
+--- #This is master playbook for nfsserver
+- hosts: webserver
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  roles:
+    - web_server

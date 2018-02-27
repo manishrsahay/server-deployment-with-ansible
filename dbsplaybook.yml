@@ -1,0 +1,8 @@
+--- #This is the role playbook
+- hosts: appserver
+  user: test
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  roles:
+    - mariadbserver

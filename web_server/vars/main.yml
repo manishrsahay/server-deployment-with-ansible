@@ -1,0 +1,11 @@
+distribution: RedHat
+nfsutils_pkg: nfs-utils
+nfsserver_service: nfs-server
+nfslock_service: nfs-lock
+nfsidmap_service: nfs-idmap
+client_path: /var/www/indanikrishna
+apache_pkg: httpd
+export_path: /var/indanikrishna
+ipofserver: 172.31.102.25
+public_ip: 52.34.36.112 
+curl_pkg: curl

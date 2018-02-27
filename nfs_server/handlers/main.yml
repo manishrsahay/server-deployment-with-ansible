@@ -1,0 +1,8 @@
+- name: exportthefile
+  shell: exportfs -a
+- name: startservices
+  service: name={{ item }} state=started
+  with_items:
+    - "{{ nfsserver_service  }}"
+    - "{{ nfslock_service }}"
+    - "{{ nfsidmap_service }}"

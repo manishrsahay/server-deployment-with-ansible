@@ -1,0 +1,6 @@
+distribution: RedHat
+nfsutils_pkg: nfs-utils
+nfsserver_service: nfs-server
+nfslock_service: nfs-lock
+nfsidmap_service: nfs-idmap
+export_path: /var/indanikrishna

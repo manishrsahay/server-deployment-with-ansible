@@ -1,0 +1,17 @@
+- name: startnfsservices
+  service: name={{ item }} state=started
+  with_items:
+    - "{{ nfsserver_service  }}"
+    - "{{ nfslock_service }}"
+    - "{{ nfsidmap_service }}"
+- name: startapacheservices
+  service: name={{ apache_pkg }} state=started
+- name: mountnfs
+  shell: mount -t nfs {{ ipofserver }}:{{ export_path }} {{ client_path }}
+- name: givepermissiontohttpd
+  shell: setsebool -P httpd_use_nfs 1 
+- name: testhttpd
+  shell: curl http://{{ public_ip }}
+  register: result
+- name: displayresult
+  debug: var=result

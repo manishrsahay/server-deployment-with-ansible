@@ -1,0 +1,7 @@
+- name: Install the nfs server utils
+  yum: pkg={{ nfsutils_pkg }} state=latest
+- name: Coopy the export file to nfs server
+  copy: src=exports.template dest=/etc/exports owner=root group=root mode=644
+  notify:
+    - exportthefile
+    - startservices

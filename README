@@ -1,0 +1,10 @@
+This project contains playbooks to deploy the NFS server which will be storing the data and 
+the web server or here we can say NFS client server to serve the static content when the users send 
+the request to the web server. The deployment is fully automated with ansible playbooks and roles.
+
+The code for website is stored in NFS server in location /var/indanikrishna for my site
+which we will be mounting on the apache web server. This location contain index.html file.
+
+Further, the ansible playbook and roles for the installation of MariaDB server is also there.
+In this case we install and configure the MariaDB server and restore the backup file to see 
+the server is fully functioning.
